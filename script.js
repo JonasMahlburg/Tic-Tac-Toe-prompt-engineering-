@@ -1,24 +1,24 @@
 let fields = [
     null,
-    'circle',
     null,
-    'cross',
-    'cross',
-    'cross',
+    null,
+    null,
+    null,
+    null,
     null,
     null,
     null,
   ];
+let currentPlayer = 'circle'; // Startspieler
+
 
 function init(){
     render();
 }
 
 function render() {
-
-  
     let tableHTML = '<table>';
-
+  
     for (let i = 0; i < 3; i++) {
       tableHTML += '<tr>';
       for (let j = 0; j < 3; j++) {
@@ -27,9 +27,9 @@ function render() {
         if (fields[index] === 'circle') {
           content = generateAnimatedCircleSVG(); // SVG-Kreis für einen Kreis
         } else if (fields[index] === 'cross') {
-          content = generateAnimatedCross(); // X für ein Kreuz
+          content = generateAnimatedCrossSVG(); // SVG für ein Kreuz
         }
-        tableHTML += `<td>${content}</td>`;
+        tableHTML += `<td onclick="handleClick(${index}, this)">${content}</td>`;
       }
       tableHTML += '</tr>';
     }
@@ -40,10 +40,28 @@ function render() {
     document.getElementById('content').innerHTML = tableHTML;
   
     // Animationen starten
-    document.querySelectorAll('circle').forEach(circle => {
-      let animation = circle.querySelector('animate');
-      animation.beginElement();
-    });
+    document.querySelectorAll('circle animate').forEach(animation => animation.beginElement());
+    document.querySelectorAll('line animate').forEach(animation => animation.beginElement());
+  }
+  
+  function handleClick(index, element) {
+    if (!fields[index]) { // Nur wenn das Feld noch leer ist
+      fields[index] = currentPlayer;
+      if (currentPlayer === 'circle') {
+        element.innerHTML = generateAnimatedCircleSVG();
+        currentPlayer = 'cross';
+      } else {
+        element.innerHTML = generateAnimatedCrossSVG();
+        currentPlayer = 'circle';
+      }
+  
+      // Animation starten
+      const animateElements = element.querySelectorAll('animate');
+      animateElements.forEach(animation => animation.beginElement());
+  
+      // onclick-Funktion entfernen
+      element.onclick = null;
+    }
   }
   
   
@@ -57,16 +75,15 @@ function render() {
       </svg>
     `;
   }
-
-  function generateAnimatedCross() {
-    // SVG-Element als String erstellen
+  
+  function generateAnimatedCrossSVG() {
     return `
-      <svg width="70" height="70">
-        <line x1="15" y1="15" x2="55" y2="55" stroke="orange" stroke-width="5">
+      <svg width="70" height="70" viewBox="0 0 70 70">
+        <line x1="15" y1="15" x2="55" y2="55" stroke="orange" stroke-width="4">
           <animate attributeName="x2" from="15" to="55" dur="0.5s" fill="freeze" />
-          <animate attributeName="y2" from="15" to="55" dur="0.5s" fill="freeze" />
+          <animate attributeName="y2" from="15" to "55" dur="0.5s" fill="freeze" />
         </line>
-        <line x1="55" y1="15" x2="15" y2="55" stroke="orange" stroke-width="5">
+        <line x1="55" y1="15" x2="15" y2="55" stroke="orange" stroke-width="4">
           <animate attributeName="x2" from="55" to="15" dur="0.5s" fill="freeze" />
           <animate attributeName="y2" from="15" to="55" dur="0.5s" fill="freeze" />
         </line>
