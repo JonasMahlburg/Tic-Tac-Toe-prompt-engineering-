@@ -1,20 +1,28 @@
 body {
-    background-color: #323232;
-    font-family: 'Open Sans', sans-serif;
-    color: #fff;
+    background-color: #323232; /* Hintergrundfarbe */
+    color: white; /* Schriftfarbe */
+    font-family: 'Comic Sans MS', cursive; /* Schriftart */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-}
+  }
+  
+  #content {
+    margin-top: 20px; /* Abstand zwischen Überschrift und Tabelle */
+  }
+  
 table {
     border-collapse: collapse;
     background-color: #323232;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 td {
-    width: 50px;
-    height: 50px;
+    width: 150px;
+    height: 150px;
     text-align: center;
     vertical-align: middle;
     border: 5px solid white;
@@ -27,4 +35,21 @@ td:first-child, td:nth-child(3) {
 tr:first-child td, tr:nth-child(3) td {
     border-top: 0;
     border-bottom: 0;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    fill: none;
+    stroke: #00BFFF;
+    stroke-width: 5;
+}
+
+.cross-line {
+    stroke: #FFA500;
+    stroke-width: 10;
 }
