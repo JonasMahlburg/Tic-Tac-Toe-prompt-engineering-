@@ -10,7 +10,8 @@ body {
   }
   
   #content {
-    margin-top: 20px; /* Abstand zwischen Überschrift und Tabelle */
+    margin-top: 0;
+    position: relative; 
   }
   
 table {
@@ -21,8 +22,8 @@ table {
     align-items: center;
 }
 td {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     text-align: center;
     vertical-align: middle;
     border: 5px solid white;
