@@ -78,3 +78,10 @@ h1{
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+#current-player{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
