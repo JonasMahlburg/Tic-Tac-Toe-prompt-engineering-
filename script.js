@@ -127,7 +127,7 @@ function generateAnimatedCircleSVG() {
     <svg width="70" height="70" viewBox="0 0 70 70">
       <circle cx="35" cy="35" r="30" fill="none" stroke="lightblue" stroke-width="4"
               stroke-dasharray="188.4" stroke-dashoffset="188.4">
-        <animate attributeName="stroke-dashoffset" from="188.4" to="0" dur="2s" fill="freeze" />
+        <animate attributeName="stroke-dashoffset" from="188.4" to="0" dur="125ms" fill="freeze" />
       </circle>
     </svg>
   `;
@@ -137,14 +137,35 @@ function generateAnimatedCrossSVG() {
   return `
     <svg width="70" height="70" viewBox="0 0 70 70">
       <line x1="15" y1="15" x2="55" y2="55" stroke="orange" stroke-width="4">
-        <animate attributeName="x2" from="15" to="55" dur="0.5s" fill="freeze" />
-        <animate attributeName="y2" from="15" to="55" dur="0.5s" fill="freeze" />
+        <animate attributeName="x2" from="15" to="55" dur="125ms" fill="freeze" />
+        <animate attributeName="y2" from="15" to="55" dur="125ms" fill="freeze" />
       </line>
       <line x1="55" y1="15" x2="15" y2="55" stroke="orange" stroke-width="4">
-        <animate attributeName="x2" from="55" to="15" dur="0.5s" fill="freeze" />
-        <animate attributeName="y2" from="15" to="55" dur="0.5s" fill="freeze" />
+        <animate attributeName="x2" from="55" to="15" dur="125ms" fill="freeze" />
+        <animate attributeName="y2" from="15" to="55" dur="125ms" fill="freeze" />
       </line>
     </svg>
   `;
+}
+
+function restart() {
+  // Felder zurücksetzen
+  fields = [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+  ];
+
+  // Spieler zurücksetzen
+  currentPlayer = 'circle';
+
+  // Spiel neu rendern
+  render();
 }
 
